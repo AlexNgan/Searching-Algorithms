@@ -39,13 +39,13 @@ public class SortDisplay extends JButton implements ActionListener
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
     
-    /*String[] choices = {"Run", "Step"};
-    JComboBox box = new JComboBox(choices);
+    String[] choices = {"Run", "Step"};
+    JComboBox<String> box = new JComboBox<>(choices);
     box.setMaximumSize(new Dimension(200, 200));
     box.setActionCommand("mode");
     box.addActionListener(this);
     box.setAlignmentX(Component.LEFT_ALIGNMENT);
-    frame.getContentPane().add(box);*/
+    frame.getContentPane().add(box); 
     
     JButton button = new JButton("Selection Sort");
     button.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -150,6 +150,8 @@ public class SortDisplay extends JButton implements ActionListener
       System.out.print(oldPointers[i] + " ");
     System.out.println();*/
     
+    System.out.println("Updatin'.");     //DEBUG STATEMENT
+    
     //check if anything changed
     boolean changed = false;
     for (int i = 0; i < array.length; i++)
@@ -157,6 +159,7 @@ public class SortDisplay extends JButton implements ActionListener
       if (array[i] != objects[pointers[i]])
       {
         changed = true;
+        System.out.println("Something's changed!"); //DEBUG STATEMENT
         break;
       }
     }
@@ -170,7 +173,7 @@ public class SortDisplay extends JButton implements ActionListener
       oldObjects[i] = objects[i];
     }
     
-    //find new positions from array
+    //Find new positions from array
     for (int i = 0; i < array.length; i++)
       pointers[i] = indexOf(array[i]);
     
@@ -240,7 +243,7 @@ public class SortDisplay extends JButton implements ActionListener
     
     if (mode == SLOW)
       try { Thread.sleep(500); } catch(InterruptedException e) {}
-    else //(mode == STEPPING)
+    else //if(mode == STEP)
     {
       clicked = false;
       while (!clicked)
