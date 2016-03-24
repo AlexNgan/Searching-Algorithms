@@ -150,8 +150,6 @@ public class SortDisplay extends JButton implements ActionListener
       System.out.print(oldPointers[i] + " ");
     System.out.println();*/
     
-    System.out.println("Updatin'.");     //DEBUG STATEMENT
-    
     //check if anything changed
     boolean changed = false;
     for (int i = 0; i < array.length; i++)
@@ -159,7 +157,6 @@ public class SortDisplay extends JButton implements ActionListener
       if (array[i] != objects[pointers[i]])
       {
         changed = true;
-        System.out.println("Something's changed!"); //DEBUG STATEMENT
         break;
       }
     }
@@ -295,6 +292,11 @@ public class SortDisplay extends JButton implements ActionListener
         }
         else if (action.equals("merge")){            //If user selects "merge" button.
           Sort.mergeSort(array);
+          update();
+        } 
+        else if(action.equals("quick")){             //If user selects "quick sort" button.
+          //Sort.quickSort(array, 0, array.length - 1);
+          //FIX WHAT THE HECK.
           update();
         }
         else
