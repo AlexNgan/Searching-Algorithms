@@ -295,8 +295,7 @@ public class SortDisplay extends JButton implements ActionListener
           update();
         } 
         else if(action.equals("quick")){             //If user selects "quick sort" button.
-          //Sort.quickSort(array, 0, array.length - 1);
-          //FIX WHAT THE HECK.
+          Sort.quickSort(array, 0, array.length - 1);
           update();
         }
         else
