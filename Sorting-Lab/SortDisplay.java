@@ -87,8 +87,11 @@ public class SortDisplay extends JButton implements ActionListener
     frame.setVisible(true);
   }
   
-  protected void paintComponent(Graphics g)
-  {
+  /*
+   * Draws representation of the array and where
+   * sorted elements go.
+  */
+  protected void paintComponent(Graphics g){
     Graphics2D g2 = (Graphics2D)g;
     g2.setColor(Color.WHITE);
     g2.fill(new Rectangle2D.Double(0, 0, getWidth(), getHeight()));
@@ -145,7 +148,7 @@ public class SortDisplay extends JButton implements ActionListener
     System.out.print("oldPointers:  ");
     for (int i = 0; i < oldPointers.length; i++)
       System.out.print(oldPointers[i] + " ");
-    System.out.println();*/    
+    System.out.println();*/
     
     //check if anything changed
     boolean changed = false;
@@ -279,12 +282,18 @@ public class SortDisplay extends JButton implements ActionListener
         
         repaint();
         
-        if (action.equals("selection"))
+        if (action.equals("selection")){             //If user selects "selection" button.
           Sort.selectionSort(array);
-        else if (action.equals("insertion"))
+          update();
+        }
+        else if (action.equals("insertion")){        //If user selects "insertion" button.
           Sort.insertionSort(array);
-        else if (action.equals("merge"))
+          update();
+        }
+        else if (action.equals("merge")){            //If user selects "merge" button.
           Sort.mergeSort(array);
+          update();
+        }
         else
           throw new UnsupportedOperationException(action);
       }
@@ -328,11 +337,13 @@ public class SortDisplay extends JButton implements ActionListener
     redraw();
   }
   
+  //Main method. 
   public static void main(String[] args)
   {
     run();
   }
   
+  //Creates new instance of sortDisplay.
   public static void run()
   {
     new SortDisplay();
