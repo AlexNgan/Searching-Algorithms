@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-//Author: Gloria Ngan
-
 public class SeqSearch{
   
   /* 
